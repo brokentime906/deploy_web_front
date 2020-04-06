@@ -38,9 +38,12 @@ const TodoInsert = ({ todos, setTodos }) => {
   const newTodo = useInput("");
   const onSubmit = async (e) => {
     e.preventDefault();
-    const { data: todo } = await axios.post("todo", {
-      params: { content: newTodo.value, done: false },
-    });
+    const { data: todo } = await axios.post(
+      "https://todolistweb-mongo.herokuapp.com/todo",
+      {
+        params: { content: newTodo.value, done: false },
+      }
+    );
   };
   return (
     <form onSubmit={onSubmit}>

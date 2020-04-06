@@ -8,7 +8,9 @@ const TodoListBlock = styled.div``;
 const TodoList = ({ todos, setTodos }) => {
   useEffect(() => {
     const fetchData = async () => {
-      const { data: todos } = await axios.get("todo");
+      const { data: todos } = await axios.get(
+        "https://todolistweb-mongo.herokuapp.com/todo"
+      );
       console.log(todos);
       setTodos(todos);
     };
