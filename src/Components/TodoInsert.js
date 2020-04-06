@@ -44,6 +44,7 @@ const TodoInsert = ({ todos, setTodos }) => {
         params: { content: newTodo.value, done: false },
       }
     );
+    window.location.reload();
   };
   return (
     <form onSubmit={onSubmit}>
