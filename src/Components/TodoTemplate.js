@@ -10,6 +10,7 @@ const TodoTemplateBlock = styled.div`
   width: 350px;
 `;
 const TodoTitle = styled.div`
+  margin-top: 40px;
   background: #22b8cf;
   color: white;
   height: 4rem;
