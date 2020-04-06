@@ -1,9 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { MdAdd } from "react-icons/md";
-import useInput from "../../Hooks/useInput";
-import { useMutation } from "react-apollo-hooks";
-import { ADD_TODO } from "./query";
+import useInput from "../Hooks/useInput";
+import axios from "axios";
 const TodoInsertBlock = styled.div`
   display: flex;
   font-size: 2rem;
@@ -37,18 +36,11 @@ const AddButton = styled.button`
 `;
 const TodoInsert = ({ todos, setTodos }) => {
   const newTodo = useInput("");
-  const [addTodoMutation] = useMutation(ADD_TODO, {
-    variables: { content: newTodo.value },
-  });
   const onSubmit = async (e) => {
     e.preventDefault();
-    const {
-      data: { addTodo: todo },
-    } = await addTodoMutation();
-    setTodos((prev) => [todo, ...prev]);
-    newTodo.setValue("");
-    window.location.reload();
-    console.log("insert starts");
+    const { data: todo } = await axios.post("todo", {
+      params: { content: newTodo.value, done: false },
+    });
   };
   return (
     <form onSubmit={onSubmit}>
