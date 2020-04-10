@@ -19,12 +19,12 @@ const TodoTitle = styled.div`
   justify-content: center;
   align-items: center;
 `;
-const TodoTemplate = ({ todos, setTodos }) => {
+const TodoTemplate = ({ todos, setTodos, onToggle }) => {
   return (
     <TodoTemplateBlock>
       <TodoTitle>Shared Todo List</TodoTitle>
       <TodoInsert setTodos={setTodos} todos={todos} />
-      <TodoList todos={todos} setTodos={setTodos} />
+      <TodoList todos={todos} setTodos={setTodos} onToggle={onToggle}/>
     </TodoTemplateBlock>
   );
 };

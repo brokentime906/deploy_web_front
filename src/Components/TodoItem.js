@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import styled from "styled-components";
 import {
   MdCheckBox,
@@ -31,15 +31,28 @@ const DeleteBox = styled.div`
 const Contents = styled.div`
   flex: 1;
 `;
-const TodoItem = ({ todo }) => {
+
+const EndContents = styled.div`
+  text-decoration : line-through;
+`;
+const TodoItem = ({id, todo, onToggle}) => {
   return (
     <TodoItemBlock>
-      <DoneBox>
+      <DoneBox onClick={() => onToggle(id)}>
         <MdCheckBoxOutlineBlank />
       </DoneBox>
-      <Contents>
-        {todo.content} // {todo.done}
-      </Contents>
+
+      {
+        todo.done
+        ?
+        <Contents>
+          {id + todo.content} + 1
+        </Contents>
+        :
+        <Contents>
+          {id + todo.content} - 1
+        </Contents>
+      }
       <DeleteBox>
         <MdRemoveCircleOutline />
       </DeleteBox>

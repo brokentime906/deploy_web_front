@@ -5,7 +5,7 @@ import axios from "axios";
 
 const TodoListBlock = styled.div``;
 
-const TodoList = ({ todos, setTodos }) => {
+const TodoList = ({ todos, setTodos, onToggle }) => {
   useEffect(() => {
     const fetchData = async () => {
       const { data: todos } = await axios.get(
@@ -19,7 +19,7 @@ const TodoList = ({ todos, setTodos }) => {
   return (
     <TodoListBlock>
       {todos.map((todo) => (
-        <TodoItem id={todo.id} todo={todo} />
+        <TodoItem id={todo.id} todo={todo} onToggle={onToggle} />
       ))}
     </TodoListBlock>
   );
